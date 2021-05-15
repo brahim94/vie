@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="crm_team_view_inherited" model="ir.ui.view">
+        <field name="name">crm.team.inherited</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="attributes">
+                <attribute name="string">Directeur BU</attribute>
+            </field>
+            <xpath expr="//notebook/page[@name='members']/field[@name='member_ids']/kanban/field[@name='id']"
+                   position="before">
+                <br/>
+                <field name="job_id"/>
+            </xpath>
+            <xpath expr="//strong[@class='o_kanban_record_title']" position="after">
+                <br/>
+                <field name="job_id"/>
+            </xpath>
+        </field>
+    </record>
+
+     <record id="view_users_simple_form_inherited" model="ir.ui.view">
+        <field name="name">res.users.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_simple_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mobile']" position="after">
+                <field name="job_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

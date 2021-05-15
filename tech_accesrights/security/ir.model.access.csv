@@ -1,0 +1,7 @@
+id;name;model_id:id;group_id:id;perm_read;perm_write;perm_create;perm_unlink
+access_res_partner_group_user;res_partner group_user;base.model_res_partner;base.group_user;0;0;0;0
+bi_crm_claim.access_cm_claim;crm_claim_name;bi_crm_claim.model_crm_claim;group_reclamation_manager;1;1;1;1
+bi_crm_claim.access_crm_claim;crm_claim_name;bi_crm_claim.model_crm_claim;group_reclamation_user;1;1;0;0
+wt_helpdesk.access_tcket_ticket;access_ticket_ticket;wt_helpdesk.model_ticket_ticket;group_sav_user;1;1;0;0
+wt_helpdesk.access_ticket_ticket;access_ticket_ticket;wt_helpdesk.model_ticket_ticket;group_sav_manager;1;1;1;1
+bi_crm_claim.crm_magasin;access_crm_magasin;bi_crm_claim.model_crm_magasin;group_sav_user;1;1;0;0

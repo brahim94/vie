@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="crm_claim_category_line_tree_view">
+        <field name="name">crm.claim.category.line.tree</field>
+        <field name="model">crm.claim.category.line</field>
+        <field name="arch" type="xml">
+            <tree string="Category Line">
+                <field name="name"/>
+                <field name="claim_category_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="crm_claim_category_line_form_view">
+        <field name="name">crm.claim.category.line Form</field>
+        <field name="model">crm.claim.category.line</field>
+        <field name="arch" type="xml">
+            <form string="Suggestion">
+                <sheet string="Suggestion">
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Description"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="team_id"/>
+                            <field name="claim_category_id" domain="[('type_demande', '=', type_demande), ('team_id', '=', team_id)]"/>
+                            <field name="type_demande" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="crm_claim_category_line_actions">
+        <field name="name">Sous Famille Réclamations</field>
+        <field name="res_model">crm.claim.category.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_type_demande': 'Reclamation'}</field>
+        <field name="domain">[('type_demande', '=', 'Reclamation')]</field>
+    </record>
+    <record model="ir.actions.act_window" id="menu_sous_famille_suggestions_actions">
+        <field name="name">Sous Famille Suggestions</field>
+        <field name="res_model">crm.claim.category.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'default_type_demande': 'Suggestion'}</field>
+        <field name="domain">[('type_demande', '=', 'Suggestion')]</field>
+    </record>
+
+    <menuitem name="Sous Famille Réclamations" id="menu_claims_line_actions"
+              parent="bi_crm_claim.menu_config_claim" action="crm_claim_category_line_actions" sequence="5"/>
+    <menuitem name="Sous Famille Suggestions" id="menu_famille_suggestions_actions"
+              parent="bi_crm_claim.menu_config_claim" action="menu_sous_famille_suggestions_actions" sequence="5"/>
+
+</odoo>

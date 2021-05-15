@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    <record id="view_magasin_inherit" model="ir.ui.view">
+                <field name="name">magasin.form.inherit</field>
+                <field name="model">crm.magasin</field>
+                <field name="inherit_id" ref="bi_crm_claim.crm_claim_magasin_form"/>
+                <field name="arch" type="xml">
+                    
+                <xpath expr="//div[@class='oe_title']" position="replace">
+                        
+                        <group col="3">
+                                <group>
+                                    <h1>
+                                        <field name="name"/>
+                                    </h1>
+                                </group>
+                                <group>
+                                    <h2>
+                                        <field name="id_magasin" placeholder="ID Magasin"/>
+                                         
+                                    </h2>
+                                </group>
+                                
+                               
+                                
+                        </group>  
+                          <group>
+                                <field name="email_sav"/>
+                                
+                                 </group>      
+                </xpath>
+
+    
+                </field>
+    </record>
+
+    <record id="view_sav_inherit" model="ir.ui.view">
+                <field name="name">sav.form.inherit</field>
+                <field name="model">ticket.ticket</field>
+                <field name="inherit_id" ref="wt_helpdesk.view_ticket_form"/>
+                <field name="arch" type="xml">
+                    
+                    
+                    
+                    <xpath expr="/form/sheet/group/group/field[@name='client_id']" position="after">
+                        <field name="business_unit"/>
+                        <field name="magasin"/>
+                    </xpath>
+                    
+                    
+                    <xpath expr="/form/sheet/group/group/field[@name='client_id']" position="replace">
+                    
+                         <field name="client_id" context="{'search_default_customer':1, 'show_address': 1, 'default_is_company': True, 'show_vat': True, 'default_magasin_id':magasin, 'default_business_unit_id':business_unit}" domain="[('customer','=',True)]" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}"/>
+                     
+                    </xpath>
+                    
+
+                  <!--  <xpath expr="/form/sheet/group/group/field[@name='is_enable']" position="attributes">
+                       <attribute name="invisible">1</attribute>
+                    </xpath>-->
+                    
+                </field>
+    </record>
+
+    <record id="view_facture_inherit" model="ir.ui.view">
+                <field name="name">facture.form.inherit</field>
+                <field name="model">factures.factures</field>
+                <field name="inherit_id" ref="wt_helpdesk.view_factures_form"/>
+                <field name="arch" type="xml">
+                    
+                    <xpath expr="/form/sheet/group/group/field[@name='date']" position="after">
+                         <field name="id_magas_in"/>
+                        <field name="magasin_id"/>
+                       
+                    </xpath>
+                    
+                </field>
+    </record>
+
+
+    <record id="view_users_inherit2" model="ir.ui.view">
+                <field name="name">user.form.inherit</field>
+                <field name="model">res.users</field>
+                <field name="inherit_id" ref="base.view_users_form"/>
+                <field name="arch" type="xml">    
+                          
+                <xpath expr="//div[@class='oe_title']" position="after">
+             
+                 <div>
+                                  
+                              
+        
+                         <field name="all_stores" string="Tous les magasins" invisible="1"/>
+                         
+                         <label for="business_unit_ids" class="oe_edit_only" string="BUs"/>
+                            <h2><field name="business_unit_ids" widget="many2many_tags"/></h2>
+                         
+                         
+                         <label for="magasin_ids" class="oe_edit_only" string="Magasins associés"/>
+                            <h2><field name="magasin_ids" widget="many2many_tags" domain="[('team_id', 'in', business_unit_ids)]" /></h2>
+                         
+             </div>     
+                         
+                         
+                         
+                </xpath>
+                </field>
+    </record>
+    
+    
+    <record id="view_reclamation_inherit" model="ir.ui.view">
+                <field name="name">partner.form.inherit</field>
+                <field name="model">res.partner</field>
+                <field name="inherit_id" ref="base.view_partner_form"/>
+                <field name="arch" type="xml">
+                    
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="business_unit_id" />
+                    <field name="magasin_id" />
+                    <field name="sms_authorisation" />         
+                </xpath>
+
+              
+
+    
+                </field>
+    </record>
+
+      <record id="view_reclamation_tree_inherit" model="ir.ui.view">
+                    <field name="name">partner.tree.inherit</field>
+                    <field name="model">res.partner</field>
+                    <field name="inherit_id" ref="base.view_partner_tree"/>
+                    <field name="arch" type="xml">
+                        
+                    <xpath expr="//field[@name='phone']" position="after">
+                        <field name="mobile" />        
+                    </xpath>
+                    <xpath expr="//field[@name='email']" position="after">
+                        <field name="business_unit_id"/>    
+                        <field name="magasin_id"/>     
+                    </xpath>
+                </field>
+    </record>
+    
+    
+    
+
+ <!--   <record id="bi_crm_claim.menu_config_claim" model="ir.ui.menu">
+                    <field name="groups_id" eval="[(4,ref('group_reclamation_admin'))]"/>
+    </record>
+    
+    <record id="wt_helpdesk.helpdesk_parameters_menu_root" model="ir.ui.menu">
+                    <field name="groups_id" eval="[(4,ref('group_sav_admin'))]"/>
+    </record>
+    <record id="wt_helpdesk.helpdesk_reference_menu_root" model="ir.ui.menu">
+                    <field name="groups_id" eval="[(4,ref('group_sav_admin'))]"/>
+    </record>
+    <record id="wt_helpdesk.helpdesk_configuration_menu_root" model="ir.ui.menu">
+                    <field name="groups_id" eval="[(4,ref('group_sav_admin'))]"/>
+    </record>-->
+
+    </data>
+    </odoo>
