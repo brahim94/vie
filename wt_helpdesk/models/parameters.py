@@ -225,6 +225,9 @@ class TicketTicket(models.Model):
 
     date_plu_tweenty = fields.Datetime(string="Date limite", compute='_add_tweenty')
 
+    date_reception_marchandise = fields.Date(string="Date réception marchandise")
+    date_recu_client = fields.Date(string="Date reçu Client")
+
     @api.multi
     def _add_tweenty(self):
         for order in self:
@@ -484,7 +487,7 @@ class TicketTicket(models.Model):
             # motif_ids = self._get_motif(self.date_achat, self.garantie, self.duree, self.date, self.ticket_type_id)
             return {'domain': {'motif_id': [('id', 'in', motif_ids)]}}
         else:
-            return {'domain': {'motif_id': [('id', 'in', [])]}}
+            return {'domain': {'motif_id': [('ticket_type_id', '=', self.ticket_type_id.id), ('code', '!=', 1)]}}
 
     @api.onchange('motif_id')
     def onchange_motif(self):

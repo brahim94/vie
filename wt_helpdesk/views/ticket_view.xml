@@ -97,6 +97,8 @@
                             <field name="invoice_id" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}"/>
                             <field name="client_id" context="{'search_default_customer':1, 'show_address': 1, 'default_is_company': True, 'show_vat': True}" domain="[('customer','=',True)]" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}"/>
                             <field name="date_achat" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}"/>
+                            <field name="date_reception_marchandise"/>
+                            <field name="date_recu_client"/>
                         </group>
                         <group>
                             <label for="garantie" string="Garantie"/>

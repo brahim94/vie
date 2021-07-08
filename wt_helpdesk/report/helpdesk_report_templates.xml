@@ -52,7 +52,7 @@
 								<tr style="margin:0;padding:0;">
 					   				<td width="1000">
 										<strong><center>S.A.V Réception Marchandise</center> </strong><br/>
-										<strong><span>Date        :</span> </strong><span t-field="doc.date"/><br/>
+										<strong><span>Date        :</span> </strong><span t-field="doc.date_reception_marchandise"/><br/>
 			             				<strong><span>Fournisseur :</span></strong><span t-field="doc.fournisseur"/><br/>
 										<strong><span>Prestataire :</span></strong><span t-field="doc.prestataire"/><br/>
 			             				<strong><span>Transporteur :</span></strong><!-- <span t-field="doc.fournisseur"/> --><br/>
@@ -118,7 +118,7 @@
 								</tr>
 								<tr style="margin:0;padding:0;">
 									<td width="1000">
-						                <strong> <span>Dates: </span></strong><span t-field="doc.date"/><br/>
+						                <strong> <span>Dates: </span></strong><span t-field="doc.date_recu_client"/><br/>
 		                                <strong> <span>Observations: </span></strong><!-- <span t-field="doc.fournisseur"/> --><br/>
 		                                <strong> <span>Reçu Conforme et en bon Etat: </span></strong><!-- <span t-field="doc.fournisseur"/> --><br/>
 				 					</td>
