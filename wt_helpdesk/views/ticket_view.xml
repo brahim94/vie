@@ -92,11 +92,11 @@
                     </div>
                     <group colspan="3" col="3">
                         <group>
-                            <field name="ticket_type_id"/>
+                            <field name="ticket_type_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True, 'create': False}"/>
                             <field name="is_enable" invisible="1"/>
-                            <field name="invoice_id" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}"/>
-                            <field name="client_id" context="{'search_default_customer':1, 'show_address': 1, 'default_is_company': True, 'show_vat': True}" domain="[('customer','=',True)]" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}"/>
-                            <field name="date_achat" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}"/>
+                            <field name="invoice_id" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True, 'create': False}"/> 
+                            <field name="client_id" context="{'search_default_customer':1, 'show_address': 1, 'default_is_company': True, 'show_vat': True}" domain="[('customer','=',True)]" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True, 'create': False}"/>
+                            <field name="date_achat" attrs="{'required': [('is_enable','=','code1')], 'readonly': [('is_enable','=','code2')]}" options="{'no_create': True, 'no_create_edit': True, 'no_open': True, 'create': False}"/>
                             <field name="date_reception_marchandise"/>
                             <field name="date_recu_client"/>
                         </group>
@@ -107,17 +107,17 @@
                                 <field name="duree" class="oe_inline"/>
                             </div>
                             <field name="garantie_date" invisible="1"/>
-                            <field name="article_id"/>
+                            <field name="article_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True, 'create': False}"/>
                             <field name="article_code"/>
                             <field name="n_serie"/>
-                            <field name="fournisseur" context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1, 'default_is_company': True, 'show_vat': True}" domain="[('supplier','=',True)]"/>
-                            <field name="prestataire" context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1, 'default_is_company': True, 'show_vat': True}" domain="[('supplier','=',True)]"/>
+                            <field name="fournisseur" options="{'no_create': True, 'no_create_edit': True, 'no_open': True, 'create': False}" context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1, 'default_is_company': True, 'show_vat': True}" domain="[('supplier','=',True)]"/>
+                            <field name="prestataire" options="{'no_create': True, 'no_create_edit': True, 'no_open': True, 'create': False}" context="{'default_customer': 0, 'search_default_supplier': 1, 'default_supplier': 1, 'default_is_company': True, 'show_vat': True}" domain="[('supplier','=',True)]"/>
                         </group>
                         <group>
                             <field name="date" readonly="0"/>
                             <field name="date_plu_tweenty" />
                             <field name="user_id" readonly="1"/>
-                            <field name="panne_type_id"/>
+                            <field name="panne_type_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True, 'create': False}"/>
                             <label for="motif_id"/>
                             <div class="oe_inline">
                                 <strong>Activer Motif -> </strong><field name="is_enable_motif"/>
