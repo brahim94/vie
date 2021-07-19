@@ -118,14 +118,14 @@
                             <field name="date_plu_tweenty" />
                             <field name="user_id" readonly="1"/>
                             <field name="panne_type_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True, 'create': False}"/>
-                            <label for="motif_id"/>
-                            <div class="oe_inline">
+                            <label for="motif_id" attrs="{'invisible': ['|', ('garantie', '=', False), ('duree', '=', 0)]}"/>
+                            <div class="oe_inline" attrs="{'invisible': ['|', ('garantie', '=', False), ('duree', '=', 0)]}">
                                 <strong>Activer Motif -> </strong><field name="is_enable_motif"/>
-                                <field name="motif_id" attrs="{'readonly': [('is_enable_motif','!=', True)]}" class="oe_inline"/>
+                                <field name="motif_id" attrs="{'readonly': [('is_enable_motif','!=', True)], 'required': [ ('garantie', '!=', False), ('duree', '>', 0)]}" class="oe_inline"/>
                             </div>
-                            <field name="decision_id" attrs="{'readonly': [('is_enable_motif','!=', True)]}"/>
-                            <field name="action_client_id" attrs="{'readonly': [('is_enable_motif','!=', True)]}"/>
-                            <field name="fournisseur_id" attrs="{'readonly': [('is_enable_motif','!=', True)]}"/>
+                            <field name="decision_id" attrs="{'readonly': [('is_enable_motif','!=', True)], 'invisible': ['|', ('garantie', '=', False), ('duree', '=', 0)], 'required': [('garantie', '!=', False), ('duree', '>', 0)]}"/>
+                            <field name="action_client_id" attrs="{'readonly': [('is_enable_motif','!=', True)], 'invisible': ['|', ('garantie', '=', False), ('duree', '=', 0)], 'required': [('garantie', '!=', False), ('duree', '>', 0)]}"/>
+                            <field name="fournisseur_id" attrs="{'readonly': [('is_enable_motif','!=', True)], 'invisible': ['|', ('garantie', '=', False), ('duree', '=', 0)], 'required': [('garantie', '!=', False), ('duree', '>', 0)]}"/>
                         </group>
                     </group>
                     <notebook>
